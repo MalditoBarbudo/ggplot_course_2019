@@ -1,0 +1,2062 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Plots in R</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Plots in R">
+  <meta name="author" content="Víctor Granda">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/solarized_dark_custom.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="libraries/widgets/quiz/css/demo.css"></link>
+<link rel=stylesheet href="libraries/widgets/bootstrap/css/bootstrap.css"></link>
+<link rel=stylesheet href="./assets/css/emphasis.css"></link>
+<link rel=stylesheet href="./assets/css/ribbons.css"></link>
+<link rel=stylesheet href="./assets/css/solarized_dark_custom.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <aside class="gdbar">
+    <img src="assets/img/logo.png">
+  </aside>
+  <hgroup class="auto-fadein">
+    <h1>Plots in R</h1>
+    <h2>ggplot2 plotting system</h2>
+    <p>Víctor Granda<br/>Technician at CREAF</p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="quote" id="slide-1" style="background:#90C695;">
+  <article data-timings="">
+    <p><q> Intro </q></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="normal" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>Data</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><strong>R</strong> comes with example data sets, allowing us to use them to get confidence
+with the different analyses and functions we can perform. If you want to see
+all the data sets installed and a brief description type
+<code>library(help = &quot;datasets&quot;)</code> in the console.<br>
+Today we will be using the <code>iris</code> data set. It was collected by Edgar Anderson in
+1935, measuring the sepal and petal length and width of 50 <em>Iris</em> flowers of
+3 different species (<em>I. setosa</em>, <em>I. versicolor</em>, <em>I. virginica</em>).  </p>
+
+<p>More info about the data:  </p>
+
+<ul>
+<li><em>Anderson, E (1935). The irises of the Gaspe Peninsula, Bulletin of the American Iris Society, 59, 2–5</em>.<br></li>
+<li><em>Fisher, R. A. (1936) The use of multiple measurements in taxonomic problems. Annals of Eugenics, 7, Part II, 179–188</em>.</li>
+</ul>
+
+<pre><code class="r"># See the data
+iris
+</code></pre>
+  
+<div class='left1' style='float:left;width:45%;height:90%'>
+ 
+</div>
+
+<div class='center1' style='float:left;width:5%;height:90%'>
+ 
+</div>
+
+<div class='right1' style='float:right;width:45%;height:90%'>
+ 
+</div>
+
+<div class='left2' style='float:left;width:45%;height:5%'>
+ 
+</div>
+
+<div class='center2' style='float:left;width:5%;height:5%'>
+ 
+</div>
+
+<div class='right2' style='float:right;width:45%;height:5%'>
+ 
+</div>
+
+<div class='left3' style='float:left;width:45%;height:5%'>
+ 
+</div>
+
+<div class='center3' style='float:left;width:5%;height:5%'>
+ 
+</div>
+
+<div class='right3' style='float:right;width:45%;height:5%'>
+ 
+</div>
+  </article>
+  <!-- Presenter Notes -->
+  <aside class="note" id="">
+    <section>
+      <p><img src="assets/img/iris.png" alt="iris"></p>
+
+<p>Image from <a href="http://sebastianraschka.com/">http://sebastianraschka.com/</a></p>
+
+    </section>
+  </aside>
+</slide>
+
+<slide class="normal" id="slide-3" style="background:#90C695;">
+  <hgroup>
+    <h2>Plots in <strong>R</strong></h2>
+  </hgroup>
+  <article data-timings="">
+    <p><strong>R</strong> not only allows for diverse analyses (a lot really!), but also implements
+a powerful graphic motor:</p>
+  
+<div class='left1' style='float:left;width:33.33%;height:90%'>
+ <p><img src="assets/fig/slideshow-1.svg" alt="plot of chunk slideshow"></p>
+
+</div>
+
+<div class='center1' style='float:left;width:33.33%;height:90%'>
+ <p><img src="assets/fig/slideshow_2-1.svg" alt="plot of chunk slideshow_2"></p>
+
+</div>
+
+<div class='right1' style='float:right;width:33.33%;height:90%'>
+ <p><img src="assets/fig/slideshow_3-1.svg" alt="plot of chunk slideshow_3"></p>
+
+</div>
+
+<div class='left2' style='float:left;width:33.33%;height:5%'>
+ 
+</div>
+
+<div class='center2' style='float:left;width:33.33%;height:5%'>
+ 
+</div>
+
+<div class='right2' style='float:right;width:33.33%;height:5%'>
+ 
+</div>
+
+<div class='left3' style='float:left;width:33.33%;height:5%'>
+ 
+</div>
+
+<div class='center3' style='float:left;width:33.33%;height:5%'>
+ 
+</div>
+
+<div class='right3' style='float:right;width:33.33%;height:5%'>
+ 
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="normal" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Plots in <strong>R</strong></h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Plot systems in <strong>R</strong></h3>
+
+<ol>
+<li><p><em>base</em>  </p></li>
+<li><p><em>lattice</em>  </p></li>
+<li><p><em>ggplot2</em></p></li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="normal" id="slide-5" style="background:;">
+  <hgroup>
+    <h2>Plots in <strong>R</strong></h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>1. <em>base</em></h3>
+
+<ul>
+<li>Empty &quot;canvas&quot;
+
+<ul>
+<li>First a high level function (<code>plot()</code>, <code>hist()</code>...)</li>
+<li>Add annotations (lines, text...) using low level functions (<code>text()</code>, <code>title()</code>,
+<code>abline()</code>...)</li>
+</ul></li>
+<li>Previous planning
+
+<ul>
+<li>There is no <em>undo</em></li>
+<li>This has its importance when building complex graphs</li>
+</ul></li>
+<li>Difficulty to follow up by others</li>
+<li><strong>TLDR: A concatenation of functions</strong></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="code" id="slide-6" style="background:;">
+  <hgroup>
+    <h2>Plots in <strong>R</strong></h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>1. <em>base</em></h3>
+  
+<div class='left' style='float:left;width:55%'>
+ <pre><code class="r"># Build the plot
+plot(Petal.Width ~ Petal.Length, data = iris)
+
+# a model to get the ab line
+model.1 &lt;- lm(Petal.Width ~ Petal.Length,
+              data = iris)
+abline(model.1)
+
+# Add equation as text
+intercept &lt;- round(model.1$coefficients[&#39;(Intercept)&#39;],3)
+slope &lt;- round(model.1$coefficients[&#39;Petal.Length&#39;],3)
+mtext(paste(&#39;y = &#39;, slope, &#39;x + &#39;,intercept,
+            sep = &#39;&#39;))
+
+# Add a title
+title(main = &#39;Length vs. Width (Petal)&#39;)
+</code></pre>
+
+</div>    
+<div class='right' style='float:right;width:45%'>
+ <p><img src="assets/fig/base_plot_1-1.svg" title="plot of chunk base_plot_1" alt="plot of chunk base_plot_1" style="display: block; margin: auto;" /></p>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="normal" id="slide-7" style="background:;">
+  <hgroup>
+    <h2>Plots in <strong>R</strong></h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>2. <em>lattice</em></h3>
+
+<ul>
+<li><p><em>lattice</em> package</p>
+
+<ul>
+<li><code>library(lattice)</code><br></li>
+</ul></li>
+<li><p>Only one function to plot (<code>xyplot()</code>, <code>bwplot()</code>...)</p>
+
+<ul>
+<li>Only one function means supply a lot of information about the plot in only
+one order</li>
+</ul></li>
+<li><p>Used a lot for <em>conditional plots</em>:</p>
+
+<ul>
+<li>$Y \sim X:Z$</li>
+</ul></li>
+<li><p>Automatic establishment of margins</p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="normal" id="slide-8" style="background:;">
+  <hgroup>
+    <h2>Plots in <strong>R</strong></h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>2. <em>lattice</em></h3>
+
+<ul>
+<li>Cons:
+
+<ul>
+<li>Complicated to set all the arguments in one function (a lot of arguments)</li>
+<li>Plot annotations are counterintuitive</li>
+<li>Plot design can be complicated</li>
+<li>There is no plot <em>after-editing</em></li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="code" id="slide-9" style="background:;">
+  <hgroup>
+    <h2>Plots in <strong>R</strong></h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>2. <em>lattice</em></h3>
+  
+<div class='left' style='float:left;width:55%'>
+ <pre><code class="r"># Build the plot with all the options we need
+library(lattice) # Load the library first
+xyplot(Petal.Width ~ Petal.Length | Species,
+       data = iris,
+       scales = &quot;free&quot;,
+       layout = c(2, 2),
+       auto.key = list(x = .6, y = .7,corner = c(0, 0)))
+</code></pre>
+
+</div>    
+<div class='right' style='float:right;width:45%'>
+ <p><img src="assets/fig/lattice_plot_1-1.svg" title="plot of chunk lattice_plot_1" alt="plot of chunk lattice_plot_1" style="display: block; margin: auto;" /></p>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="normal" id="slide-10" style="background:;">
+  <hgroup>
+    <h2>Plots in <strong>R</strong></h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>3. <em>ggplot2</em></h3>
+
+<ul>
+<li><em>ggplot2</em> package
+
+<ul>
+<li><code>library(ggplot2)</code></li>
+</ul></li>
+<li>Based on Leland Wilkinson&#39;s &quot;The Grammar of Graphs&quot; </li>
+<li>Middle point between <em>base</em> and <em>lattice</em></li>
+<li>Automatically in charge of plot formatting (text, titles, margins, colors...)
+
+<ul>
+<li>It does a lot of thing by default</li>
+<li>But they can be changed as we want</li>
+</ul></li>
+<li><em>Easy</em> to use</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="code" id="slide-11" style="background:;">
+  <hgroup>
+    <h2>Plots in <strong>R</strong></h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>3. <em>ggplot2</em></h3>
+  
+<div class='left' style='float:left;width:50%'>
+ <pre><code class="r"># Load library
+library(ggplot2)
+# Draw the plot
+plot1 &lt;- ggplot(data = iris, aes(x = Petal.Length,
+                                 y = Petal.Width,
+                                 color = Species)) +
+  geom_point()+
+  stat_smooth(method = lm)+
+  stat_smooth(mapping = aes(x = Petal.Length,
+                            y = Petal.Width),
+              data = iris, method = lm,
+              color = &#39;black&#39;, se = FALSE)
+# see the plot
+plot1
+</code></pre>
+
+</div>    
+<div class='right' style='float:right;width:50%'>
+ <p><img src="assets/fig/ggplot2_plot_1-1.svg" title="plot of chunk ggplot2_plot_1" alt="plot of chunk ggplot2_plot_1" style="display: block; margin: auto;" /></p>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="code" id="slide-12" style="background:;">
+  <hgroup>
+    <h2>Plots in <strong>R</strong></h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>3. <em>ggplot2</em></h3>
+  
+<div class='left' style='float:left;width:50%'>
+ <pre><code class="r">plot1 +
+  theme_bw()+
+  labs(title = &#39;Length vs. Width (Petal)&#39;,
+       x = &#39;Width&#39;, y = &#39;Length&#39;)+
+  theme(plot.background = element_rect(fill = &#39;transparent&#39;),
+        panel.background = element_rect(fill = &#39;transparent&#39;),
+        legend.background = element_rect(fill = &#39;transparent&#39;),
+        legend.key = element_rect(fill = &#39;transparent&#39;),
+        panel.grid = element_blank(),
+        panel.border = element_rect(colour = &#39;black&#39;),
+        legend.position = c(.8,.2))
+</code></pre>
+
+</div>    
+<div class='right' style='float:right;width:50%'>
+ <p><img src="assets/fig/ggplot2_plot_2-1.svg" title="plot of chunk ggplot2_plot_2" alt="plot of chunk ggplot2_plot_2" style="display: block; margin: auto;" /></p>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="normal" id="slide-13" style="background:;">
+  <hgroup>
+    <h2>Think before plotting!!</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Before starting to building the plot we need to stop and think:</p>
+
+<ul>
+<li><p><strong>Where are we going to use the plot?</strong></p>
+
+<ul>
+<li>Screen (web, presentations...)</li>
+<li>Paper, file (reports, publications...)</li>
+</ul></li>
+<li><p><strong>How complex will be the plot?</strong></p>
+
+<ul>
+<li>A lot of data</li>
+<li>Little data</li>
+</ul></li>
+<li><p><strong>Will be resizing a thing?</strong></p>
+
+<ul>
+<li>vectorial formats (eps, svg, pdf)</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+  <aside class="note" id="">
+    <section>
+      <p><img src="assets/img/tmd.gif" alt=""></p>
+
+    </section>
+  </aside>
+</slide>
+
+<slide class="quote" id="slide-14" style="background:#90C695;">
+  <article data-timings="">
+    <p><q> ggplot2 Plotting System </q></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="normal" id="slide-15" style="background:;">
+  <hgroup>
+    <h2>ggplot2</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Intro</h3>
+
+<ol>
+<li><p><code>ggplot2</code> package by Hadley Wickham:</p>
+
+<pre><code class="r">install.packages(&#39;ggplot2&#39;, dep=TRUE)
+</code></pre>
+
+<pre><code class="r">library(ggplot2)
+</code></pre></li>
+<li><p>Leland Wilkinson&#39;s <em>&quot;Grammar of graphics&quot;</em> implementation</p></li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="quote" id="slide-16" style="background:;">
+  <article data-timings="">
+    <p><q> &quot;In brief, the grammar tells us that a statistical graphic is <strong>mapping</strong>
+  from data to <strong>aesthetic</strong> attributes (colour, shape, size) of <strong>geometric</strong>
+  objects (points, lines, bars). The plot may also contain statistical
+  transformations of the data and is drawn on a specific coordinate system&quot;.
+  </q></p>
+
+<p><em>ggplot</em> book</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="normal" id="slide-17" style="background:;">
+  <hgroup>
+    <h2>ggplot2</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Basic concepts</h3>
+
+<ul>
+<li>Same concept as <em>base</em>: <strong>empty canvas</strong></li>
+<li>Data must be in a <strong><code>data.frame</code></strong></li>
+<li>Basic function: <code>ggplot</code></li>
+<li><strong>IMPORTANT</strong> Factors are better named:<br>
+
+<ul>
+<li><code>Control</code>, <code>Trat_A</code> y <code>Trat_B</code> instead of <code>1</code>, <code>2</code> and <code>3</code></li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="normal" id="slide-18" style="background:;">
+  <hgroup>
+    <h2>ggplot2</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Basic concepts</h3>
+
+<ul>
+<li><strong>Main components of a ggplot plot</strong>
+
+<ul>
+<li>Data: a data.frame</li>
+<li><em>aesthetics</em>: How and to where mapping the data</li>
+<li><em>geom</em>: geometric objects mapped</li>
+<li><em>facets</em>: conditional panels</li>
+<li><em>stats</em>: statistical transformations (ablines, histograms...)</li>
+<li><em>scales</em>: mapping scales (color, sizes, axes)</li>
+<li>coordinate system</li>
+<li><em>themes</em>: predefined and custom themes and modifications</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="normal" id="slide-19" style="background:;">
+  <hgroup>
+    <h2>gplot2</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Basic concepts</h3>
+  
+<div class='left' style='float:left;width:55%'>
+ <ul>
+<li><strong>Layers</strong>
+
+<ul>
+<li>First we map the data</li>
+<li>We add geometries</li>
+<li>We add visual <em>helpers</em> (stats or facets)</li>
+<li>Finally, metadata and annotations (legends, titles, customization...)</li>
+</ul></li>
+</ul>
+
+</div>    
+<div class='right' style='float:right;width:40%'>
+ <p><img src="assets/img/ggplot.gif" alt=""></p>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="code" id="slide-20" style="background:;">
+  <hgroup>
+    <h2>gpplot2</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Histogram</h3>
+  
+<div class='left' style='float:left;width:55%'>
+ <pre><code class="r"># Load the library and the data
+# install.packages(&#39;ggplot2&#39;, dep=TRUE)
+library(ggplot2)
+iris
+
+# Histogram of petal width
+histograma &lt;- ggplot(data = iris, aes(x = Petal.Width)) + # first layer
+  geom_histogram() # second layer
+
+# Call the plot to see it
+histograma
+</code></pre>
+
+</div>    
+<div class='right' style='float:right;width:40%'>
+ <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+</code></pre>
+
+<p><img src="assets/fig/base_ggplot_1b-1.svg" title="plot of chunk base_ggplot_1b" alt="plot of chunk base_ggplot_1b" style="display: block; margin: auto;" /></p>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+  <aside class="note" id="">
+    <section>
+      <p><img src="assets/fig/base_ggplot_1c-1.svg" title="plot of chunk base_ggplot_1c" alt="plot of chunk base_ggplot_1c" style="display: block; margin: auto auto auto 0;" /></p>
+
+    </section>
+  </aside>
+</slide>
+
+<slide class="code" id="slide-21" style="background:;">
+  <hgroup>
+    <h2>ggplot2</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Points</h3>
+  
+<div class='left' style='float:left;width:55%'>
+ <pre><code class="r"># Width-Length relation
+puntos &lt;- ggplot(data = iris,
+                 aes(x = Petal.Width,
+                     y = Petal.Length)) +
+  geom_point()
+
+# Call the plot to see it
+puntos
+</code></pre>
+
+</div>    
+<div class='right' style='float:right;width:40%'>
+ <p><img src="assets/fig/base_ggplot_2b-1.svg" title="plot of chunk base_ggplot_2b" alt="plot of chunk base_ggplot_2b" style="display: block; margin: auto;" /></p>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+  <aside class="note" id="">
+    <section>
+      <p><img src="assets/fig/base_ggplot_2c-1.svg" title="plot of chunk base_ggplot_2c" alt="plot of chunk base_ggplot_2c" style="display: block; margin: auto auto auto 0;" /></p>
+
+    </section>
+  </aside>
+</slide>
+
+<slide class="code" id="slide-22" style="background:;">
+  <hgroup>
+    <h2>ggplot2</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Box-plots</h3>
+  
+<div class='left' style='float:left;width:55%'>
+ <pre><code class="r"># Width by Species
+cajas_petalo &lt;- ggplot(data = iris,
+                       aes(x = Species, y = Petal.Width)) +
+  geom_boxplot()
+
+# Call the plot to see it
+cajas_petalo
+</code></pre>
+
+</div>    
+<div class='right' style='float:right;width:40%'>
+ <p><img src="assets/fig/base_ggplot_3b-1.svg" title="plot of chunk base_ggplot_3b" alt="plot of chunk base_ggplot_3b" style="display: block; margin: auto;" /></p>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+  <aside class="note" id="">
+    <section>
+      <p><img src="assets/fig/base_ggplot_3c-1.svg" title="plot of chunk base_ggplot_3c" alt="plot of chunk base_ggplot_3c" style="display: block; margin: auto auto auto 0;" /></p>
+
+    </section>
+  </aside>
+</slide>
+
+<slide class="code" id="slide-23" style="background:;">
+  <hgroup>
+    <h2>ggplot2</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Colors</h3>
+  
+<div class='left' style='float:left;width:55%'>
+ <pre><code class="r"># Build the plot wothout geometry
+puntos_petalo &lt;- ggplot(data = iris,
+                        aes(x = Petal.Width, y = Petal.Length))
+
+# We add color, the same for all points
+puntos_petalo + geom_point(color = &#39;red&#39;, size = 4, alpha = .5)
+</code></pre>
+
+</div>    
+<div class='right' style='float:right;width:40%'>
+ <p><img src="assets/fig/base_ggplot_4b-1.svg" title="plot of chunk base_ggplot_4b" alt="plot of chunk base_ggplot_4b" style="display: block; margin: auto;" /></p>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="code" id="slide-24" style="background:;">
+  <hgroup>
+    <h2>ggplot2</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Colors and shapes</h3>
+
+<pre><code class="r"># We map the color to a variable (remember, we do that in the aesthetics)
+puntos_petalo + geom_point(aes(color = Species), size = 4, alpha = .5)
+
+# We map the shape to a variable (remember, we do that in the aesthetics)
+puntos_petalo + geom_point(aes(shape = Species), size = 4, alpha = .5)
+</code></pre>
+  
+<div class='left1' style='float:left;width:49.5%;height:90%'>
+ <p><img src="assets/fig/base_ggplot_5e-1.svg" title="plot of chunk base_ggplot_5e" alt="plot of chunk base_ggplot_5e" style="display: block; margin: auto;" /></p>
+
+</div>
+
+<div class='center1' style='float:left;width:1%;height:90%'>
+ 
+</div>
+
+<div class='right1' style='float:right;width:49.5%;height:90%'>
+ <p><img src="assets/fig/base_ggplot_5f-1.svg" title="plot of chunk base_ggplot_5f" alt="plot of chunk base_ggplot_5f" style="display: block; margin: auto;" /></p>
+
+</div>
+
+<div class='left2' style='float:left;width:49.5%;height:5%'>
+ 
+</div>
+
+<div class='center2' style='float:left;width:1%;height:5%'>
+ 
+</div>
+
+<div class='right2' style='float:right;width:49.5%;height:5%'>
+ 
+</div>
+
+<div class='left3' style='float:left;width:49.5%;height:5%'>
+ 
+</div>
+
+<div class='center3' style='float:left;width:1%;height:5%'>
+ 
+</div>
+
+<div class='right3' style='float:right;width:49.5%;height:5%'>
+ 
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="exercise" id="slide-25" style="background:;">
+  <hgroup>
+    <h2>Exercise 1</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Build the plots that we have already seen, but for <strong>sepal</strong> data  </p>
+  
+<div class='left1' style='float:left;width:33.33%;height:90%'>
+ <p><img src="assets/fig/ggplot_exercise_1a-1.svg" title="plot of chunk ggplot_exercise_1a" alt="plot of chunk ggplot_exercise_1a" style="display: block; margin: auto;" /></p>
+
+</div>
+
+<div class='center1' style='float:left;width:33.33%;height:90%'>
+ <p><img src="assets/fig/ggplot_exercise_1b-1.svg" title="plot of chunk ggplot_exercise_1b" alt="plot of chunk ggplot_exercise_1b" style="display: block; margin: auto;" /></p>
+
+</div>
+
+<div class='right1' style='float:right;width:33.33%;height:90%'>
+ <p><img src="assets/fig/ggplot_exercise_1c-1.svg" title="plot of chunk ggplot_exercise_1c" alt="plot of chunk ggplot_exercise_1c" style="display: block; margin: auto;" /></p>
+
+</div>
+
+<div class='left2' style='float:left;width:33.33%;height:5%'>
+ 
+</div>
+
+<div class='center2' style='float:left;width:33.33%;height:5%'>
+ 
+</div>
+
+<div class='right2' style='float:right;width:33.33%;height:5%'>
+ 
+</div>
+
+<div class='left3' style='float:left;width:33.33%;height:5%'>
+ 
+</div>
+
+<div class='center3' style='float:left;width:33.33%;height:5%'>
+ 
+</div>
+
+<div class='right3' style='float:right;width:33.33%;height:5%'>
+ 
+</div>
+  </article>
+  <!-- Presenter Notes -->
+  <aside class="note" id="">
+    <section>
+      <p><strong>Solution</strong>:</p>
+
+<pre><code class="r"># Build the plots
+a &lt;- ggplot(data = iris, aes(x = Sepal.Width)) +
+  geom_histogram()
+b &lt;- ggplot(data = iris, aes(x = Species,
+                           y = Sepal.Width,
+                           color = Species)) +
+  geom_boxplot()
+c &lt;- ggplot(iris, aes(x = Sepal.Width,
+                      y = Sepal.Length,
+                      color = Species,
+                      shape = Species)) +
+  geom_point(size = 4, alpha = .5)
+
+# See them
+a
+b
+c
+</code></pre>
+
+    </section>
+  </aside>
+</slide>
+
+<slide class="code" id="slide-26" style="background:;">
+  <hgroup>
+    <h2>ggplot2</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Facets and Stats</h3>
+
+<pre><code class="r"># Lets save in an object the plot we want
+plot_petalo &lt;- ggplot(data=iris, aes(x=Petal.Length, y=Petal.Width, color=Species)) +
+  geom_point(size=4, alpha=.5)
+
+# Now we divide it in facets
+plot_petalo + facet_grid(. ~ Species)
+</code></pre>
+  
+<div class='left1' style='float:left;width:40%;height:90%'>
+ <p><img src="assets/fig/base_ggplot_7b-1.svg" title="plot of chunk base_ggplot_7b" alt="plot of chunk base_ggplot_7b" style="display: block; margin: auto;" /></p>
+
+</div>
+
+<div class='center1' style='float:left;width:59%;height:90%'>
+ <p><img src="assets/fig/base_ggplot_7c-1.svg" title="plot of chunk base_ggplot_7c" alt="plot of chunk base_ggplot_7c" style="display: block; margin: auto;" /></p>
+
+</div>
+
+<div class='right1' style='float:right;width:1%;height:90%'>
+ 
+</div>
+
+<div class='left2' style='float:left;width:40%;height:5%'>
+ 
+</div>
+
+<div class='center2' style='float:left;width:59%;height:5%'>
+ 
+</div>
+
+<div class='right2' style='float:right;width:1%;height:5%'>
+ 
+</div>
+
+<div class='left3' style='float:left;width:40%;height:5%'>
+ 
+</div>
+
+<div class='center3' style='float:left;width:59%;height:5%'>
+ 
+</div>
+
+<div class='right3' style='float:right;width:1%;height:5%'>
+ 
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="code" id="slide-27" style="background:;">
+  <hgroup>
+    <h2>ggplot2</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Facets and Stats</h3>
+  
+<div class='left1' style='float:left;width:49.5%;height:90%'>
+ <pre><code class="r"># Si queremos por filas
+plot_petalo + facet_grid(Species ~ .)
+</code></pre>
+
+</div>
+
+<div class='center1' style='float:left;width:1%;height:90%'>
+ 
+</div>
+
+<div class='right1' style='float:right;width:49.5%;height:90%'>
+ <p><img src="assets/fig/base_ggplot_7e-1.svg" title="plot of chunk base_ggplot_7e" alt="plot of chunk base_ggplot_7e" style="display: block; margin: auto;" /></p>
+
+</div>
+
+<div class='left2' style='float:left;width:49.5%;height:5%'>
+ 
+</div>
+
+<div class='center2' style='float:left;width:1%;height:5%'>
+ 
+</div>
+
+<div class='right2' style='float:right;width:49.5%;height:5%'>
+ 
+</div>
+
+<div class='left3' style='float:left;width:49.5%;height:5%'>
+ 
+</div>
+
+<div class='center3' style='float:left;width:1%;height:5%'>
+ 
+</div>
+
+<div class='right3' style='float:right;width:49.5%;height:5%'>
+ 
+</div>
+  </article>
+  <!-- Presenter Notes -->
+  <aside class="note" id="">
+    <section>
+      <pre><code class="r">iris$Treatment &lt;- rep(c(&#39;A&#39;, &#39;B&#39;), 75)
+ggplot(data=iris, aes(x=Petal.Length, y=Petal.Width,
+                      color=Species, shape = Treatment)) +
+  geom_point(size=4, alpha=.5) +
+  facet_grid(Treatment ~ Species)
+</code></pre>
+
+<p><img src="assets/fig/base_ggplot_7f-1.svg" title="plot of chunk base_ggplot_7f" alt="plot of chunk base_ggplot_7f" style="display: block; margin: auto auto auto 0;" /></p>
+
+    </section>
+  </aside>
+</slide>
+
+<slide class="code" id="slide-28" style="background:;">
+  <hgroup>
+    <h2>ggplot2</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Facets and Stats</h3>
+
+<pre><code class="r"># We can add a lineal regression to all the data
+plot_petalo + stat_smooth(method=&#39;lm&#39;)
+
+# or combining stats with facets
+plot_petalo + facet_grid(. ~ Species) + stat_smooth(method=&#39;lm&#39;)
+</code></pre>
+  
+<div class='left1' style='float:left;width:49.5%;height:90%'>
+ <p><img src="assets/fig/base_ggplot_8b-1.svg" title="plot of chunk base_ggplot_8b" alt="plot of chunk base_ggplot_8b" style="display: block; margin: auto;" /></p>
+
+</div>
+
+<div class='center1' style='float:left;width:1%;height:90%'>
+ 
+</div>
+
+<div class='right1' style='float:right;width:49.5%;height:90%'>
+ <p><img src="assets/fig/base_ggplot_8c-1.svg" title="plot of chunk base_ggplot_8c" alt="plot of chunk base_ggplot_8c" style="display: block; margin: auto;" /></p>
+
+</div>
+
+<div class='left2' style='float:left;width:49.5%;height:5%'>
+ 
+</div>
+
+<div class='center2' style='float:left;width:1%;height:5%'>
+ 
+</div>
+
+<div class='right2' style='float:right;width:49.5%;height:5%'>
+ 
+</div>
+
+<div class='left3' style='float:left;width:49.5%;height:5%'>
+ 
+</div>
+
+<div class='center3' style='float:left;width:1%;height:5%'>
+ 
+</div>
+
+<div class='right3' style='float:right;width:49.5%;height:5%'>
+ 
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="code" id="slide-29" style="background:;">
+  <hgroup>
+    <h2>ggplot2</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Facets and Stats</h3>
+
+<pre><code class="r"># As we are simply adding layers, we can add another abline calculated
+# with all the data. For that we need to &quot;break&quot; the grouping we made with
+# the color aesthetic
+plot_petalo + stat_smooth(method=&#39;lm&#39;, se=FALSE) +
+  stat_smooth(color=&#39;black&#39;, method=&#39;lm&#39;, linetype=2)
+</code></pre>
+
+<p><img src="assets/fig/base_ggplot_9-1.svg" title="plot of chunk base_ggplot_9" alt="plot of chunk base_ggplot_9" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="code" id="slide-30" style="background:;">
+  <hgroup>
+    <h2>ggplot2</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Facets and Stats</h3>
+  
+<div class='left1' style='float:left;width:49.5%;height:90%'>
+ <pre><code class="r"># There is more stats, like density
+ggplot(data=iris, aes(x=Petal.Width)) +
+  stat_density(color=&#39;red&#39;, alpha=.5, fill=&#39;red&#39;)
+</code></pre>
+
+<p><img src="assets/fig/base_ggplot_10-1.svg" title="plot of chunk base_ggplot_10" alt="plot of chunk base_ggplot_10" style="display: block; margin: auto;" /></p>
+
+</div>
+
+<div class='center1' style='float:left;width:1%;height:90%'>
+ 
+</div>
+
+<div class='right1' style='float:right;width:49.5%;height:90%'>
+ <pre><code class="r">#
+# or quantiles
+plot_petalo + stat_quantile()
+</code></pre>
+
+<p><img src="assets/fig/base_ggplot_10b-1.svg" title="plot of chunk base_ggplot_10b" alt="plot of chunk base_ggplot_10b" style="display: block; margin: auto;" /></p>
+
+</div>
+
+<div class='left2' style='float:left;width:49.5%;height:5%'>
+ 
+</div>
+
+<div class='center2' style='float:left;width:1%;height:5%'>
+ 
+</div>
+
+<div class='right2' style='float:right;width:49.5%;height:5%'>
+ 
+</div>
+
+<div class='left3' style='float:left;width:49.5%;height:5%'>
+ 
+</div>
+
+<div class='center3' style='float:left;width:1%;height:5%'>
+ 
+</div>
+
+<div class='right3' style='float:right;width:49.5%;height:5%'>
+ 
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="code" id="slide-31" style="background:;">
+  <hgroup>
+    <h2>ggplot2</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Scales</h3>
+  
+<div class='left1' style='float:left;width:49.5%;height:90%'>
+ <pre><code class="r">#
+#
+#
+# Colour, shape or line type scales
+plot_petalo +
+  scale_color_manual(values=c(&#39;red&#39;,&#39;green&#39;,&#39;blue&#39;))
+</code></pre>
+
+<p><img src="assets/fig/base_ggplot_11-1.svg" title="plot of chunk base_ggplot_11" alt="plot of chunk base_ggplot_11" style="display: block; margin: auto;" /></p>
+
+</div>
+
+<div class='center1' style='float:left;width:1%;height:90%'>
+ 
+</div>
+
+<div class='right1' style='float:right;width:49.5%;height:90%'>
+ <pre><code class="r"># Colour, shape or line type scales
+plot_petalo +
+  stat_smooth(mapping=aes(linetype=Species),
+              method=&#39;lm&#39;) +
+  scale_color_manual(values=c(&#39;red&#39;,&#39;green&#39;,&#39;blue&#39;)) +
+  scale_linetype_manual(values=c(1,2,3))
+</code></pre>
+
+<p><img src="assets/fig/base_ggplot_11b-1.svg" title="plot of chunk base_ggplot_11b" alt="plot of chunk base_ggplot_11b" style="display: block; margin: auto;" /></p>
+
+</div>
+
+<div class='left2' style='float:left;width:49.5%;height:5%'>
+ 
+</div>
+
+<div class='center2' style='float:left;width:1%;height:5%'>
+ 
+</div>
+
+<div class='right2' style='float:right;width:49.5%;height:5%'>
+ 
+</div>
+
+<div class='left3' style='float:left;width:49.5%;height:5%'>
+ 
+</div>
+
+<div class='center3' style='float:left;width:1%;height:5%'>
+ 
+</div>
+
+<div class='right3' style='float:right;width:49.5%;height:5%'>
+ 
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="code" id="slide-32" style="background:;">
+  <hgroup>
+    <h2>ggplot2</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Scales</h3>
+  
+<div class='left1' style='float:left;width:49.5%;height:90%'>
+ <pre><code class="r">#
+# Axis scales
+plot_petalo +
+  scale_x_log10()
+</code></pre>
+
+<p><img src="assets/fig/base_ggplot_12-1.svg" title="plot of chunk base_ggplot_12" alt="plot of chunk base_ggplot_12" style="display: block; margin: auto;" /></p>
+
+</div>
+
+<div class='center1' style='float:left;width:1%;height:90%'>
+ 
+</div>
+
+<div class='right1' style='float:right;width:49.5%;height:90%'>
+ <pre><code class="r"># Now we can do a loess smooth
+plot_petalo +
+  scale_x_log10() +
+  stat_smooth(method=&#39;loess&#39;, color=&#39;black&#39;)
+</code></pre>
+
+<p><img src="assets/fig/base_ggplot_12b-1.svg" title="plot of chunk base_ggplot_12b" alt="plot of chunk base_ggplot_12b" style="display: block; margin: auto;" /></p>
+
+</div>
+
+<div class='left2' style='float:left;width:49.5%;height:5%'>
+ 
+</div>
+
+<div class='center2' style='float:left;width:1%;height:5%'>
+ 
+</div>
+
+<div class='right2' style='float:right;width:49.5%;height:5%'>
+ 
+</div>
+
+<div class='left3' style='float:left;width:49.5%;height:5%'>
+ 
+</div>
+
+<div class='center3' style='float:left;width:1%;height:5%'>
+ 
+</div>
+
+<div class='right3' style='float:right;width:49.5%;height:5%'>
+ 
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="code" id="slide-33" style="background:;">
+  <hgroup>
+    <h2>ggplot2</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Annotations</h3>
+  
+<div class='left1' style='float:left;width:49.5%;height:90%'>
+ <pre><code class="r">#
+# Plot title
+plot_petalo +
+  labs(title=&#39;Width vs. Length (Petal)&#39;)
+</code></pre>
+
+<p><img src="assets/fig/base_ggplot_13-1.svg" title="plot of chunk base_ggplot_13" alt="plot of chunk base_ggplot_13" style="display: block; margin: auto;" /></p>
+
+</div>
+
+<div class='center1' style='float:left;width:1%;height:90%'>
+ 
+</div>
+
+<div class='right1' style='float:right;width:49.5%;height:90%'>
+ <pre><code class="r"># Plot and axis title
+plot_petalo +
+  labs(title=&#39;Width vs. Length (Petal)&#39;,
+       x=&#39;Length [cm]&#39;, y=&#39;Width [cm]&#39;)
+</code></pre>
+
+<p><img src="assets/fig/base_ggplot_13b-1.svg" title="plot of chunk base_ggplot_13b" alt="plot of chunk base_ggplot_13b" style="display: block; margin: auto;" /></p>
+
+</div>
+
+<div class='left2' style='float:left;width:49.5%;height:5%'>
+ 
+</div>
+
+<div class='center2' style='float:left;width:1%;height:5%'>
+ 
+</div>
+
+<div class='right2' style='float:right;width:49.5%;height:5%'>
+ 
+</div>
+
+<div class='left3' style='float:left;width:49.5%;height:5%'>
+ 
+</div>
+
+<div class='center3' style='float:left;width:1%;height:5%'>
+ 
+</div>
+
+<div class='right3' style='float:right;width:49.5%;height:5%'>
+ 
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="code" id="slide-34" style="background:;">
+  <hgroup>
+    <h2>ggplot2</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Personalización</h3>
+  
+<div class='left1' style='float:left;width:49.5%;height:90%'>
+ <pre><code class="r">#
+#
+# Preset themes
+plot_petalo +
+  theme_bw()
+</code></pre>
+
+<p><img src="assets/fig/base_ggplot_14-1.svg" title="plot of chunk base_ggplot_14" alt="plot of chunk base_ggplot_14" style="display: block; margin: auto;" /></p>
+
+</div>
+
+<div class='center1' style='float:left;width:1%;height:90%'>
+ 
+</div>
+
+<div class='right1' style='float:right;width:49.5%;height:90%'>
+ <pre><code class="r"># ggthemes library
+# install.packages(&#39;ggthemes&#39;, dep=TRUE)
+library(ggthemes)
+plot_petalo + theme_solarized(light=FALSE) +
+  scale_color_solarized()
+</code></pre>
+
+<p><img src="assets/fig/base_ggplot_14b-1.svg" title="plot of chunk base_ggplot_14b" alt="plot of chunk base_ggplot_14b" style="display: block; margin: auto;" /></p>
+
+</div>
+
+<div class='left2' style='float:left;width:49.5%;height:5%'>
+ 
+</div>
+
+<div class='center2' style='float:left;width:1%;height:5%'>
+ 
+</div>
+
+<div class='right2' style='float:right;width:49.5%;height:5%'>
+ 
+</div>
+
+<div class='left3' style='float:left;width:49.5%;height:5%'>
+ 
+</div>
+
+<div class='center3' style='float:left;width:1%;height:5%'>
+ 
+</div>
+
+<div class='right3' style='float:right;width:49.5%;height:5%'>
+ 
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="code" id="slide-35" style="background:;">
+  <hgroup>
+    <h2>ggplot2</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Customization</h3>
+  
+<div class='left1' style='float:left;width:49.5%;height:90%'>
+ <pre><code class="r"># theme customization help
+help(theme)
+
+# minimalist config
+minimalista &lt;- ggplot(data=iris, aes(x=Petal.Length,
+                                     y=Petal.Width,
+                                     shape=Species)) +
+  geom_point(size=4, alpha=.5)
+
+minimalista + theme_bw() +
+  theme(panel.grid=element_blank(),
+        panel.border=element_rect(color=&#39;black&#39;),
+        legend.position=c(.9,.2))
+</code></pre>
+
+</div>
+
+<div class='center1' style='float:left;width:1%;height:90%'>
+ 
+</div>
+
+<div class='right1' style='float:right;width:49.5%;height:90%'>
+ <p><img src="assets/fig/base_ggplot_15b-1.svg" title="plot of chunk base_ggplot_15b" alt="plot of chunk base_ggplot_15b" style="display: block; margin: auto;" /></p>
+
+</div>
+
+<div class='left2' style='float:left;width:49.5%;height:5%'>
+ 
+</div>
+
+<div class='center2' style='float:left;width:1%;height:5%'>
+ 
+</div>
+
+<div class='right2' style='float:right;width:49.5%;height:5%'>
+ 
+</div>
+
+<div class='left3' style='float:left;width:49.5%;height:5%'>
+ 
+</div>
+
+<div class='center3' style='float:left;width:1%;height:5%'>
+ 
+</div>
+
+<div class='right3' style='float:right;width:49.5%;height:5%'>
+ 
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="code" id="slide-36" style="background:#89C4F4;">
+  <hgroup>
+    <h2>ggplot2</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Customization</h3>
+  
+<div class='left1' style='float:left;width:55%;height:90%'>
+ <pre><code class="r"># web modification
+web_plot &lt;- ggplot(data=iris, aes(x=Petal.Length,
+                                     y=Petal.Width,
+                                     colour=Species)) +
+  geom_point(size=4, alpha=.9) +
+  scale_color_manual(values=c(&#39;#4183D7&#39;, &#39;#19B5FE&#39;, &#39;#22313F&#39;))
+
+web_plot + theme_bw() +
+  theme(panel.grid=element_blank(),
+        panel.border=element_blank(),
+        panel.background=element_rect(fill=&#39;#C5EFF7&#39;),
+        legend.position=c(.9,.2),
+        legend.background=element_rect(fill=&#39;transparent&#39;),
+        legend.key=element_rect(fill=&#39;transparent&#39;, color=&#39;transparent&#39;),
+        text=element_text(color=&#39;#1F3A93&#39;),
+        axis.ticks=element_line(color=&#39;#1F3A93&#39;),
+        plot.background=element_rect(fill=&#39;#89C4F4&#39;))
+</code></pre>
+
+</div>
+
+<div class='center1' style='float:left;width:1%;height:90%'>
+ 
+</div>
+
+<div class='right1' style='float:right;width:44%;height:90%'>
+ <p><img src="assets/fig/base_ggplot_16b-1.svg" title="plot of chunk base_ggplot_16b" alt="plot of chunk base_ggplot_16b" style="display: block; margin: auto;" /></p>
+
+</div>
+
+<div class='left2' style='float:left;width:55%;height:5%'>
+ 
+</div>
+
+<div class='center2' style='float:left;width:1%;height:5%'>
+ 
+</div>
+
+<div class='right2' style='float:right;width:44%;height:5%'>
+ 
+</div>
+
+<div class='left3' style='float:left;width:55%;height:5%'>
+ 
+</div>
+
+<div class='center3' style='float:left;width:1%;height:5%'>
+ 
+</div>
+
+<div class='right3' style='float:right;width:44%;height:5%'>
+ 
+</div>
+  </article>
+  <!-- Presenter Notes -->
+  <aside class="note" id="">
+    <section>
+      <p>To pick up colours, web search is always there for you!!<br>
+You can find things like <a href="http://www.flatuicolorpicker.com/all">flatuicolorpicker</a></p>
+
+    </section>
+  </aside>
+</slide>
+
+<slide class="code" id="slide-37" style="background:#89C4F4;">
+  <hgroup>
+    <h2>ggplot2</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3><strong>Extra</strong> Barplot with error bars</h3>
+  
+<div class='left1' style='float:left;width:55%;height:90%'>
+ <pre><code class="r"># data preparation with dplyr
+library(dplyr)
+iris %&gt;%
+  group_by(Species, Treatment) %&gt;%
+  summarise_all(funs(mean, sd)) %&gt;%
+  # building the plot
+  ggplot(aes(x=Species, y=Petal.Width_mean, fill = Treatment)) +
+  geom_bar(stat=&#39;identity&#39;, alpha=.7, position = position_dodge()) +
+  geom_errorbar(aes(ymin=Petal.Width_mean-Petal.Width_sd,
+                    ymax=Petal.Width_mean+Petal.Width_sd,
+                    color=Treatment),
+                width=0.5,
+                position = position_dodge()) +
+  scale_color_manual(values=c(&#39;#4183D7&#39;, &#39;#19B5FE&#39;)) +
+  scale_fill_manual(values=c(&#39;#4183D7&#39;, &#39;#19B5FE&#39;)) +
+  theme_bw() +
+  theme(panel.grid=element_blank(),
+        panel.border=element_blank(),
+        panel.background=element_rect(fill=&#39;#C5EFF7&#39;),
+        legend.position=c(.12,.8),
+        legend.background=element_rect(fill=&#39;transparent&#39;),
+        legend.key=element_rect(fill=&#39;transparent&#39;, color=&#39;transparent&#39;),
+        text=element_text(color=&#39;#1F3A93&#39;),
+        axis.ticks=element_line(color=&#39;#1F3A93&#39;),
+        plot.background=element_rect(fill=&#39;#89C4F4&#39;, color=&#39;#89C4F4&#39;))
+</code></pre>
+
+</div>
+
+<div class='center1' style='float:left;width:1%;height:90%'>
+ 
+</div>
+
+<div class='right1' style='float:right;width:44%;height:90%'>
+ <p><img src="assets/fig/base_ggplot_17b-1.svg" title="plot of chunk base_ggplot_17b" alt="plot of chunk base_ggplot_17b" style="display: block; margin: auto;" /></p>
+
+</div>
+
+<div class='left2' style='float:left;width:55%;height:5%'>
+ 
+</div>
+
+<div class='center2' style='float:left;width:1%;height:5%'>
+ 
+</div>
+
+<div class='right2' style='float:right;width:44%;height:5%'>
+ 
+</div>
+
+<div class='left3' style='float:left;width:55%;height:5%'>
+ 
+</div>
+
+<div class='center3' style='float:left;width:1%;height:5%'>
+ 
+</div>
+
+<div class='right3' style='float:right;width:44%;height:5%'>
+ 
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="code" id="slide-38" style="background:#89C4F4;">
+  <hgroup>
+    <h2>ggplot2</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3><strong>Extra</strong> Maps</h3>
+  
+<div class='left1' style='float:left;width:55%;height:90%'>
+ <pre><code class="r"># Data preparation
+crimes &lt;- data.frame(state = tolower(rownames(USArrests)),
+                     USArrests)
+
+# Map data (from &quot;maps&quot; library)
+# install.packages(&#39;maps&#39;, dep=TRUE)
+library(maps)
+states_map &lt;- map_data(&quot;state&quot;)
+
+# Build the plot
+mapa &lt;- ggplot(crimes, aes(map_id = state, fill = Murder)) +
+  geom_map(map = states_map) +
+  expand_limits(x = states_map$long, y = states_map$lat) +
+  coord_map()
+
+mapa
+</code></pre>
+
+</div>
+
+<div class='center1' style='float:left;width:1%;height:90%'>
+ 
+</div>
+
+<div class='right1' style='float:right;width:44%;height:90%'>
+ <p><img src="assets/fig/base_ggplot_18b-1.svg" title="plot of chunk base_ggplot_18b" alt="plot of chunk base_ggplot_18b" style="display: block; margin: auto;" /></p>
+
+</div>
+
+<div class='left2' style='float:left;width:55%;height:5%'>
+ 
+</div>
+
+<div class='center2' style='float:left;width:1%;height:5%'>
+ 
+</div>
+
+<div class='right2' style='float:right;width:44%;height:5%'>
+ 
+</div>
+
+<div class='left3' style='float:left;width:55%;height:5%'>
+ 
+</div>
+
+<div class='center3' style='float:left;width:1%;height:5%'>
+ 
+</div>
+
+<div class='right3' style='float:right;width:44%;height:5%'>
+ 
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="code" id="slide-39" style="background:;">
+  <hgroup>
+    <h2>ggplot2</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3><strong>Extra</strong> Interactive maps</h3>
+
+<pre><code class="r"># libraries
+# install.packages(&#39;leaflet&#39;)
+library(leaflet)
+# data
+long &lt;- c(2.1093)
+lat &lt;- c(41.500821)
+que &lt;- c(&#39;CREAF&#39;)
+data &lt;- data.frame(long,lat,que)
+# interactive map
+leaflet(data) %&gt;%
+  addTiles(urlTemplate = &#39;http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}&#39;,
+             attribution = &#39;Tiles &amp;copy; Esri &amp;mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community&#39;,
+             options = tileOptions(noWrap = FALSE)) %&gt;%
+  setView(lng = 2.1093, lat = 41.500821, zoom = 17) %&gt;%
+  addCircleMarkers(lng = long, lat = lat,
+                   radius = 10,
+                   fillOpacity = 0.7,
+                   fillColor = &quot;#FDE725&quot;,
+                   stroke = FALSE) %&gt;%
+  addPopups(lng = long, lat = lat, popup = &#39;CREAF&#39;)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="exercise" id="slide-40" style="background:#89C4F4;">
+  <hgroup>
+    <h2>Exercise 2</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Lets do something different (at least with different data). In the next exercise
+we are gonna use the <code>airquality</code> data set. This data set describes the ozone
+concentration (<code>Ozone</code>), solar radiation (<code>Solar.R</code>), wind (<code>Wind</code>) and
+temperature (<code>Temp</code>) from May (<code>5</code>) to September (<code>9</code>), 1973 in New York City.
+We want to represent the relation (if any) between ozone concentration and
+wind, building a plot with the following elements and layers:</p>
+
+<ul>
+<li>Title (&#39;Ozone vs. Wind&#39;)</li>
+<li>Axis titles (x &#39;Wind [mph]&#39;; y &#39;Ozone [ppb]&#39;)</li>
+<li>Colour by month</li>
+<li>Abline foer each month, without the standard error shade</li>
+<li>Custom scale for color and line type (at your taste)</li>
+<li>Custom legend to indicate the month name instead of the number</li>
+</ul>
+
+<p>Once we got the previous plot, save it to an object and use it as a starting
+point to change the plot background (to &#39;lemonchiffon&#39;) and add facets for
+each month</p>
+  
+<div class='left1' style='float:left;width:33.33%;height:90%'>
+ 
+</div>
+
+<div class='center1' style='float:left;width:33.33%;height:90%'>
+ 
+</div>
+
+<div class='right1' style='float:right;width:33.33%;height:90%'>
+ 
+</div>
+
+<div class='left2' style='float:left;width:33.33%;height:5%'>
+ 
+</div>
+
+<div class='center2' style='float:left;width:33.33%;height:5%'>
+ 
+</div>
+
+<div class='right2' style='float:right;width:33.33%;height:5%'>
+ 
+</div>
+
+<div class='left3' style='float:left;width:33.33%;height:5%'>
+ 
+</div>
+
+<div class='center3' style='float:left;width:33.33%;height:5%'>
+ 
+</div>
+
+<div class='right3' style='float:right;width:33.33%;height:5%'>
+ 
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="code" id="slide-41" style="background:;">
+  <article data-timings="">
+    <p><img src="assets/fig/ggplot_exercise_2-1.svg" title="plot of chunk ggplot_exercise_2" alt="plot of chunk ggplot_exercise_2" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="code" id="slide-42" style="background:;">
+  <article data-timings="">
+    <p><img src="assets/fig/ggplot_exercise_2b-1.svg" title="plot of chunk ggplot_exercise_2b" alt="plot of chunk ggplot_exercise_2b" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+  <aside class="note" id="">
+    <section>
+      <pre><code class="r">airq_plot &lt;- ggplot(airquality,
+                    aes(x = Wind, y = Ozone, color = Month)) +
+  geom_point() +
+  labs(title = &#39;Ozone vs. Wind&#39;, x = &#39;Wind [mph]&#39;, y = &#39;Ozone [ppb]&#39;) +
+  geom_smooth(method = &#39;lm&#39;, se = FALSE) +
+  scale_color_manual(values = c(&#39;green&#39;, &#39;red&#39;, &#39;blue&#39;, &#39;yellow&#39;, &#39;orange&#39;),
+                     labels = c(&#39;May&#39;, &#39;Jun&#39;, &#39;Jul&#39;, &#39;Ago&#39;, &#39;Sep&#39;))
+
+airq_plot +
+  facet_wrap(~ Month) +
+  theme(panel.background = element_rect(fill = &#39;lemonchiffon&#39;))
+</code></pre>
+
+    </section>
+  </aside>
+</slide>
+
+<slide class="thank-you-slide segue nobackground" id="slide-43">
+  <aside class="gdbar right"><img src="assets/img/logo.png"></aside>
+  <article class="flexbox vleft auto-fadein">
+    <h2>Muchísimas gracias</h2>
+    <p>Para cualquier duda o consulta podeís encontrarme en:</p>
+
+  </article>
+
+  <p class="auto-fadein" data-config-contact="">
+    <a href="https://www.researchgate.net/profile/Victor_Granda2">ResearchGate</a><br>
+    <a href="http://scholar.google.es/citations?user=l5wQUoQAAAAJ">Google Scholar</a><br>
+    <a href="mailto:victorgrandagarcia@gmail.com">e-mail</a><br>
+    <a href="https://twitter.com/MalditoBarbudo">twitter</a><br>
+  </p>
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='NA'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Data'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Plots in <strong>R</strong>'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Plots in <strong>R</strong>'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='Plots in <strong>R</strong>'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='Plots in <strong>R</strong>'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='Plots in <strong>R</strong>'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='Plots in <strong>R</strong>'>
+         8
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='Plots in <strong>R</strong>'>
+         9
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=10 title='Plots in <strong>R</strong>'>
+         10
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='Plots in <strong>R</strong>'>
+         11
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='Plots in <strong>R</strong>'>
+         12
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=13 title='Think before plotting!!'>
+         13
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=14 title='NA'>
+         14
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=15 title='ggplot2'>
+         15
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=16 title='NA'>
+         16
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=17 title='ggplot2'>
+         17
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=18 title='ggplot2'>
+         18
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=19 title='gplot2'>
+         19
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=20 title='gpplot2'>
+         20
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=21 title='ggplot2'>
+         21
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=22 title='ggplot2'>
+         22
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=23 title='ggplot2'>
+         23
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=24 title='ggplot2'>
+         24
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=25 title='Exercise 1'>
+         25
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=26 title='ggplot2'>
+         26
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=27 title='ggplot2'>
+         27
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=28 title='ggplot2'>
+         28
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=29 title='ggplot2'>
+         29
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=30 title='ggplot2'>
+         30
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=31 title='ggplot2'>
+         31
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=32 title='ggplot2'>
+         32
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=33 title='ggplot2'>
+         33
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=34 title='ggplot2'>
+         34
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=35 title='ggplot2'>
+         35
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=36 title='ggplot2'>
+         36
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=37 title='ggplot2'>
+         37
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=38 title='ggplot2'>
+         38
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=39 title='ggplot2'>
+         39
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=40 title='Exercise 2'>
+         40
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=41 title='NA'>
+         41
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=42 title='NA'>
+         42
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=43 title='Muchísimas gracias'>
+         43
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  <script src="libraries/widgets/quiz/js/jquery.quiz.js"></script>
+<script src="libraries/widgets/quiz/js/mustache.min.js"></script>
+<script src="libraries/widgets/quiz/js/quiz-app.js"></script>
+<script src="libraries/widgets/bootstrap/js/bootstrap.min.js"></script>
+<script src="libraries/widgets/bootstrap/js/bootbox.min.js"></script>
+
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<script>  
+  $(function (){ 
+    $("#example").popover(); 
+    $("[rel='tooltip']").tooltip(); 
+  });  
+  </script>  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>

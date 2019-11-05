@@ -1,0 +1,98 @@
+/*
+CSS hacks to improve slidify output, grabbed from
+https://github.com/ramnathv/slidify
+Tener en cuenta que la fuente la coge de internet por
+lo que  puede no funcionar pasado un tiempo.
+Las clases (.example) están modificadas a partir de
+ribbons.css
+*/
+
+
+@import url(http://fonts.googleapis.com/css?family=Crimson+Text);
+@import url(http://fonts.googleapis.com/css?family=Lobster);
+
+
+.normal {
+  background-color: #eee8d5;
+  color: #657b83;
+  padding: .1em 2em;
+  text-align: left;
+}
+
+slide.normal h2 {
+  color: #4183D7;
+}
+
+slide.normal h3 {
+  color: #4183d7;
+}
+
+.figs {
+  background-color: #f4d03f;
+  color: #4183d7;
+  padding: .1em 2em;
+  text-aling:center;
+}
+
+slide.figs h3 {
+  color: #4183D7;
+}
+
+.quote {
+  background-color: #6c7a89;
+  padding: .1em 2em;
+}
+
+slide.quote strong {
+  color: #dc322f;
+  font-family: "Crimson Text";
+  font-size: 1.5em;
+}
+
+slide.quote q {
+  font-size: 48px;
+  line-height: 1.5em;
+  font-family: "Lobster";
+  color: #fdf6e3;
+}
+
+.code {
+  background: #eee8d5;
+  color: #657b83;
+  padding: .1em 1em;
+  text-align: left;
+}
+
+slide.code h2 {
+  color: #4183D7;
+}
+
+slide.code h3 {
+  color: #4183D7;
+}
+
+em {
+  font-style: italic;
+}
+
+strong {
+  font-weight: bold;
+  font-size: 1.1em;
+  color: #dc322f;
+}
+
+slide.codetiny {
+  background: #eee8d5;
+}
+
+slide.codetiny h2 {
+  color: #4183D7;
+}
+
+slide.codetiny h3 {
+  color: #4183D7;
+}
+
+slide.codetiny code {
+  font-size: 0.7em;
+}
